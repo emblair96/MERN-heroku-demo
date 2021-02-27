@@ -3,11 +3,21 @@ const db = require("../models");
 
 // This file empties the Books collection and inserts the books below
 
-mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/reactreadinglist"
-);
+// mongoose.connect(
+//   process.env.MONGODB_URI ||
+//   "mongodb://localhost/reactreadinglist"
+// );
 
+
+mongoose.connect(
+  process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+  }
+  );
+/*
 const bookSeed = [
   {
     title: "The Dead Zone",
@@ -134,3 +144,4 @@ db.Book
     console.error(err);
     process.exit(1);
   });
+*/
