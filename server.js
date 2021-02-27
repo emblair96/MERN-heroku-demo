@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const uri = process.env.ATLAS_URI;
 
 
 // Define middleware here
@@ -24,7 +23,7 @@ app.use(routes);
 // Connect to the Mongo DB
 if (process.env.NODE_ENV === "production") {
   
-  mongoose.connect(uri),  
+  mongoose.connect("mongodb://localhost/reactreadinglist"),
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -32,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
     useFindAndModify: false
   };
 } else {
-  mongoose.connect("mongodb://localhost/reactreadinglist"),
+  mongoose.connect(process.env.MONGODB_URI),  
   {
   useNewUrlParser: true,
   useUnifiedTopology: true,
