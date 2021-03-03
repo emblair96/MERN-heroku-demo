@@ -23,7 +23,7 @@ app.use(routes);
 // Connect to the Mongo DB
 if (process.env.NODE_ENV === "production") {
   
-  mongoose.connect("mongodb://localhost/reactreadinglist"),
+  mongoose.connect(process.env.MONGODB_URI),  
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
     useFindAndModify: false
   };
 } else {
-  mongoose.connect(process.env.MONGODB_URI),  
+  mongoose.connect("mongodb://localhost/reactreadinglist"),
   {
   useNewUrlParser: true,
   useUnifiedTopology: true,
